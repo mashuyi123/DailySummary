@@ -1,0 +1,14 @@
+MarkDown快捷键
+- **粗体** (`Ctrl+B`) 
+- *斜体* (`Ctrl+I`)
+- 引用 (`Ctrl+Q`)
+- 代码块 (`Ctrl+K`)
+- 标题 1, 2, 3 (`Ctrl+1`, `Ctrl+2`, `Ctrl+3`)
+- 列表 (`Ctrl+U` and `Ctrl+Shift+O`)
+- 插入即时时间戳功能：快捷键 ctrl+T
+- 1-4级标题 ：Ctrl + (1-4)	
+- 超链接： Ctrl + L
+- Image: Ctrl + G
+- 无序列表： Ctrl + U
+- 有序列表: Ctrl + Shift + O
+- 软件对列表的支持只有一级深度，如果需要多级列表，请在二级列表前为两个空格，第三级列表前为五个空格.第四级为九个空格
