@@ -1,7 +1,14 @@
+支持网站：http://python.itcarlow.ie/resources.html
+
+## 第二章 ##
 ### IDLE使用技巧 ###
 1、IDLE使用颜色区分显示代码：内置函数紫色、字符串绿色、关键字橙色、生成结果蓝色。
 
 2、键入一些代码，TAB键，代码建议或补全。
+
+3、IDEL shell提供python方法函数有关文档，在help->Python Docs中，F1也可查看
+
+4、Alt+p 回退操作，Alt+n 下一步操作（IDLE的会话管理实现）
 
 ### python基本语法 ###
 1、python的变量标识符没有类型。
@@ -54,4 +61,29 @@ python列表是一个数据集合，数据项之间用逗号分隔，整个列�
 	enumerate() //创建成对数据的一个编号列表，从0开始
 	id() //返回一个python数据对象的唯一标识
 	next() //返回一个可迭代数据对象如列表的下一项eg:range(3)生成0/1/2
+	print() //print()函数有一个参数end=""，会关闭print函数的默认换行行为
+
+8、函数可选参数
+
+	为函数参数提供一个缺省值，这个参数就变为可选参数，调用时，没有该参数，则默认缺省值，有则使用提供的值。
+	
+## 第三章 文件与异常 ##
+### 打开文件并读取 ###
+1、文件打开、读取与关闭	
+
+	import os //导入OS模块；
+	os.getcwd() //获取当前工作目录；
+	os.chdir("D:\\01mashuyi\\DailySummary\\Python\\HeadFirstPython\\chapter3") //切换至读取文件所在目录
+	os.getcwd() //确认是否在正确的路径下
+	data = open("test.txt") //打开文件，并复制给名为data的文件对象
+	print(data.readline(),end = "") //获取一行数据
+	data.seek(0) //返回文件起始位置
+	for each_line in data: //使用迭代打印文件数据
+	data.close() //关闭文件
+2、查看与处理数据
+
+	split()方法：分解字符串，返回字符串列表
+	(name,language) = each_line.split(":") //多重赋值
+	python字符串的find()方法，查找字符串中的子串，如果无法找到，返回-1，如果找到，返回第一个该子串在原字符串中的索引位置
+
 	
