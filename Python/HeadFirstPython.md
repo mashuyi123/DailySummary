@@ -15,15 +15,16 @@
 
 2、python列表
 
-python列表是一个数据集合，数据项之间用逗号分隔，整个列表用中括号包围。
+- python可变列表是一个数据集合，数据项之间用逗号分隔，整个列表用中括号包围。
 
-	python中创建一个列表，解释器会在内存中创建一个类似数组的数据结构来存储数据，数据项自下而上堆放，形成堆栈。
-	listA.append("foot") //在列表末尾增加数据
-	listA.pop() //在列表末尾删除数据
-	listA.extend(["book","drink"]) //在列表中追加一个列表
-	listA.remove("book") //在列表中删除某一特定项目
-	listA.insert(0,"bread") //在某个特定位置前增加一个数据
-	len(listA) //可以统计列表中数据项的个数
+		python中创建一个列表，解释器会在内存中创建一个类似数组的数据结构来存储数据，数据项自下而上堆放，形成堆栈。
+		listA.append("foot") //在列表末尾增加数据
+		listA.pop() //在列表末尾删除数据
+		listA.extend(["book","drink"]) //在列表中追加一个列表
+		listA.remove("book") //在列表中删除某一特定项目
+		listA.insert(0,"bread") //在某个特定位置前增加一个数据
+		len(listA) //可以统计列表中数据项的个数
+- python中不可变列表是指元组数据集合，一旦列表数据赋值给一个元祖，将不能再改变，列表使用小括号包围。
 
 3、使用while和for都是为了处理迭代结构的数据，但是while使用时要有状态信息（count）,for循环由python解释器考虑状态信息。
 
@@ -74,7 +75,7 @@ python列表是一个数据集合，数据项之间用逗号分隔，整个列�
 	import os //导入OS模块；
 	os.getcwd() //获取当前工作目录；
 	os.chdir("D:\\01mashuyi\\DailySummary\\Python\\HeadFirstPython\\chapter3") //切换至读取文件所在目录
-	os.getcwd() //确认是否在正确的路径下
+	os.path.exists("test.txt") //确认需要打开的文件是否存在
 	data = open("test.txt") //打开文件，并复制给名为data的文件对象
 	print(data.readline(),end = "") //获取一行数据
 	data.seek(0) //返回文件起始位置
@@ -85,5 +86,43 @@ python列表是一个数据集合，数据项之间用逗号分隔，整个列�
 	split()方法：分解字符串，返回字符串列表
 	(name,language) = each_line.split(":") //多重赋值
 	python字符串的find()方法，查找字符串中的子串，如果无法找到，返回-1，如果找到，返回第一个该子串在原字符串中的索引位置
+3、异常捕获
 
-	
+	为避免程序崩溃，在发生异常时将其捕获，使得程序能恢复正常运行。
+	一般异常：
+			try:
+				code
+			except:
+				recoverd code
+	找出需要保护，可能会发生异常的代码；
+	指定异常：即指定要处理的运行时的错误类型
+			try:
+				code
+			except IOError:
+				recoverd code
+	扩展异常：指异常处理程序中有一些代码希望发生了异常也必须执行，不能跳过
+			try:
+				code
+			except ValueError:
+				recoverd code
+			finally:
+				code
+					
+## 第四章 持久存储  ##
+### 数据保存到文件 ###
+1、持久存储：指将处理后的基于内存的数据存储在磁盘上。
+2、以写模式打开文件：
+
+	open()默认以读的方式打开文件，所以不用显式指定；
+	out = open("test.txt","w")
+	print("Test writtinh!", file = out) //out表示所写数据文件对象的名
+	out.close() //完成数据写入时，一定要关闭文件，实现刷新输出,如果写入过程中出现一样，关闭文件可能无法执行，此时需要加异常处理，把关闭文件操作移动到异常处理Finally中
+	使用访问方式为w时，打开指定文件写，若文件已存在，则覆盖写入，若文件不存在，则会创建文件
+	使用访问方式为a时，打开指定文件追加写入
+	使用访问方式w+，打开指定文件完成读和写
+### python基础知识 ###
+1、Python变量只是包含一个数据对象的引用，数据对象才真正包含数据，Python的内存管理技术会回收所使用的RAM。当没有数据对象指示某个变量时，Python会将它回收，如果想改变一个不可变的值，Python会提示TypeError。
+
+2、Python中不可变的数据类型：元组、字符串、数值类型等。
+
+阅读至：142
