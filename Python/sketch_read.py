@@ -21,13 +21,24 @@ try:
 	data.close()
 except IOError:
 	print("sketch.txt is missing!")
+finally:
+	# 文件不存在时，创建data文件对象会失败,data.close()会报错，提示NameError,data找不到
+	if "data" in locals():
+		data.close()
 
 try:
-	print_man = open("man_data.txt","w")
-	print(man,file = print_man)
-	print_other = open("other_data.txt","w")
-	except IOError:
+	with open("man_data.txt","w") as print_man:
+		print(man,file = print_man)
+	with open("other_data.txt","w") as print_other:
+		print(other,file = print_other)
+except IOError:
 	print("File error!")
-finally:
-	print_man.close()
-	print_other.close()
+
+with open("man_data.txt") as mdf:
+	print(mdf.readline())
+
+
+aaa = "mmashuyitestaaa"
+
+if "mashuyi" in aaa:
+	print("a")

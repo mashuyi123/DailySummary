@@ -63,6 +63,7 @@
 	id() //返回一个python数据对象的唯一标识
 	next() //返回一个可迭代数据对象如列表的下一项eg:range(3)生成0/1/2
 	print() //print()函数有一个参数end=""，会关闭print函数的默认换行行为
+	locals() //BIF返回当前作用域中定义的所有名的一个集合（可用以查看文件对象是否存在等）
 
 8、函数可选参数
 
@@ -107,6 +108,10 @@
 				recoverd code
 			finally:
 				code
+	产生一个异常时，python解释器会将一个异常对象传入这个except组，为异常对象指定一个名字，然后异常对象就可作为错误消息的一部分
+			except IOErrpr as err:
+				print("File error:" + str(err))
+		
 					
 ## 第四章 持久存储  ##
 ### 数据保存到文件 ###
@@ -124,5 +129,26 @@
 1、Python变量只是包含一个数据对象的引用，数据对象才真正包含数据，Python的内存管理技术会回收所使用的RAM。当没有数据对象指示某个变量时，Python会将它回收，如果想改变一个不可变的值，Python会提示TypeError。
 
 2、Python中不可变的数据类型：元组、字符串、数值类型等。
+### 用with处理文件 ###
+1、使用with时，不用用finally关闭打开的文件，python解释器会自动关闭（with语句利用了上下文管理协议的python技术）
 
-阅读至：142
+	try:
+		data = open("test.txt","w")
+		print("It's a ...",file = data)
+	except IOError as err:
+		print("File error:" + str(err))
+	finally:
+		if "data" in locals():
+			data.close()
+相当于：
+
+	try:
+		with open("text.txt","w") as data:
+			print("It's a ...",file = data)
+	except IOError as err:
+		print("File error:" + str(err))
+			
+2、标准输出
+
+	print()写数据的默认位置是屏幕	
+
