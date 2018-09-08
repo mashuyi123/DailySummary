@@ -87,6 +87,7 @@
 	split()方法：分解字符串，返回字符串列表
 	(name,language) = each_line.split(":") //多重赋值
 	python字符串的find()方法，查找字符串中的子串，如果无法找到，返回-1，如果找到，返回第一个该子串在原字符串中的索引位置
+	strip()方法从字符串中去除不想要的空白
 3、异常捕获
 
 	为避免程序崩溃，在发生异常时将其捕获，使得程序能恢复正常运行。
@@ -125,6 +126,7 @@
 	使用访问方式为w时，打开指定文件写，若文件已存在，则覆盖写入，若文件不存在，则会创建文件
 	使用访问方式为a时，打开指定文件追加写入
 	使用访问方式w+，打开指定文件完成读和写
+	print("test",file = fh) //file参数控制将数据发送/保存到哪里
 ### python基础知识 ###
 1、Python变量只是包含一个数据对象的引用，数据对象才真正包含数据，Python的内存管理技术会回收所使用的RAM。当没有数据对象指示某个变量时，Python会将它回收，如果想改变一个不可变的值，Python会提示TypeError。
 
@@ -150,5 +152,18 @@
 			
 2、标准输出
 
-	print()写数据的默认位置是屏幕	
-
+	sys.stdout //print()写数据的默认位置是屏幕即标准输出
+3、python标准库：pickle，可保存加载任何python数据对象。
+	
+	import pickle；
+	**pickle.dump(obj, file, protocol=None,)**
+    	必填参数obj表示将要封装的对象
+		必填参数file表示obj要写入的文件对象，file必须以二进制可写模式打开，即“wb”
+	**pickle.load(file,*,fix_imports=True, encoding="ASCII", errors="strict")**
+    	必填参数file必须以二进制可读模式打开，即“rb”，其他都为可选参数
+	使用dump()保存数据，使用load()恢复数据；
+	腌制或者解腌制异常：PickleError
+## 第五章 推导数据 ##
+### 处理数据 ###
+1、python中的数据排序
+阅读169

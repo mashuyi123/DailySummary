@@ -1,4 +1,7 @@
 import os
+import nester
+import pickle
+
 os.getcwd()
 os.chdir("D:\\01mashuyi\\DailySummary\\Python\\HeadFirstPython\\chapter3")
 # os.chdir("G:\\00mashuyi\\DailySummary\\Python\\HeadFirstPython\\chapter3")
@@ -25,20 +28,20 @@ finally:
 	# 文件不存在时，创建data文件对象会失败,data.close()会报错，提示NameError,data找不到
 	if "data" in locals():
 		data.close()
-
+'''
 try:
 	with open("man_data.txt","w") as print_man:
-		print(man,file = print_man)
+		nester.print_lol(man,fh = print_man)
 	with open("other_data.txt","w") as print_other:
-		print(other,file = print_other)
-except IOError:
-	print("File error!")
+		nester.print_lol(other,fh = print_other)
+except IOError as err:
+	print("File error!" + str(err))
+'''
 
-with open("man_data.txt") as mdf:
-	print(mdf.readline())
+try:
+	with open ("man_data.txt","wb") as man_file,open("other_data.txt","wb") as other_file:
+		pickle.dump(man,man_file)
+		pickle.dump(other,other_file)
 
-
-aaa = "mmashuyitestaaa"
-
-if "mashuyi" in aaa:
-	print("a")
+except pickle.PickleError as perr:
+	print("Picking error!" + str(perr))
