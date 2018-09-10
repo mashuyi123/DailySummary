@@ -166,4 +166,58 @@
 ## 第五章 推导数据 ##
 ### 处理数据 ###
 1、python中的数据排序
-阅读169
+
+	原地排序：按指定的顺序排序，排序后的数据替换原数据，对于列表，sort()提供原地排序；
+	复制排序：按指定的顺序排序，排序后返回原数据的一个有序副本，sorted()BIF支持复制排序；
+	默认sort()方法和sorted()BIF会按照升序排序，如果需要降序，则传入参数reverse = True.
+2、方法串链从左向右读，函数串链从右向左读
+
+3、列表推导：减少从一个列表转换为另一个列表时所需要的代码量
+
+	原转换过程：
+		创建一个新列表存放转换后的数据；
+		迭代处理原列表中各个数据项；
+		每次迭代时完成转换；
+		将转换后的数据追加到新列表.
+	eg:
+		jamesData = []
+		for each in james:
+			jamesData.append(sanitize(each))
+	使用列表推导：
+		jamesData = [sanitize(each) for each in james]
+	eg:分转换为秒
+		mins = [1,2,3]
+		secs = [each * 60 for each in mins]
+		secs = [60, 120, 180]
+	eg:大小写转换
+		lower = ["I","don't", "like","spam"]
+		upper = [s.upper() for s in lower]
+		upper =['I', "DON'T", 'LIKE', 'SPAM']
+4、访问列表数据：单个访问或者使用列表分片
+	
+	james[0];james[1]
+	james[0:2]
+
+5、删除列表重复项
+
+	法一：
+	a = [1,2,3,4,1,2,3]
+	b = []
+	for each in a:
+		if each not in b:
+			b.aappend(each)
+	print(b) // b = [1,2,3] 
+	法二：用集合删除列表重复项
+	b = set(a)	
+6、python中的集合
+	
+	python中的集合，数据项时无序的，且数据项不允许重复，如果试图加入一个重复的数据，python会将其忽略.
+	set() //set()BIF用于创建一个空集合
+	distances = set()
+	distances = {10.6,3.2,11,8,1,3.2} //提供的重复项会被忽略
+7、工厂函数
+	
+	工厂函数用于创建某种类型的新的数据项. //set()就是一个工厂函数，创建新的集合.
+## 第六章 打包代码与数据 ##
+###  ###
+阅读至：198页
